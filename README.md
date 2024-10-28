@@ -79,9 +79,9 @@ Make sure you have the following installed:
     ```
 
 ### Usage
-**Open Jupyter Notebook and Run Cells**
+1. **Open Jupyter Notebook and Run Cells**  
     ```python
     jupyter notebook main.ipynb
-    ```
+    ```  
 **MAKE SURE DATASET IN PROPER DIRECTORY**
 
