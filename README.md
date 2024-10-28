@@ -51,10 +51,8 @@ The following steps were taken to develop the rental price prediction model:
 ## Next Steps
 
 The project is ongoing, and the following steps are planned to improve the model and expand the analysis:
-- **Enhancing Data Quality:** Collect more data to increase the diversity of locations and housing types.
-- **Feature Expansion:** Consider incorporating additional features, such as neighborhood crime rates, proximity to public transport, and school ratings.
+- **Feature Selection:** Only consider features that have a higher impact on the model as opposed to those who do not. 
 - **Model Optimization:** Experiment with hyperparameter tuning and more advanced models (e.g., Gradient Boosting Machines, Neural Networks).
-- **Deployment:** Develop a web-based interface for users to input house attributes and receive rental price predictions in real-time.
 
 ## Getting Started
 
@@ -79,7 +77,9 @@ Make sure you have the following installed:
     python -m venv venv
     source venv/bin/activate # On Windows use `venv\Scripts\activate`
     ```
-3. **Open Jupyter Notebook and Run Cells**
+
+### Usage
+**Open Jupyter Notebook and Run Cells**
     ```python
     jupyter notebook main.ipynb
     ```
