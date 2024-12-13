@@ -27,7 +27,7 @@ paginate: true
 
 ---
 
-# Dataset Overview
+# **Dataset Overview**
 
 ### **Features**
 1. Area of the house (numerical)
@@ -42,8 +42,6 @@ paginate: true
 - **Low, Medium, High, Preium**: Class.
 
 ---
-
-# Models Implemented
 
 1. **Linear Regression**
 2. **Polynomial Regression**
@@ -61,18 +59,18 @@ paginate: true
 
 ---
 
-# Price Distribution
+# **Price Distribution**
 
 ![Price Distribution](images/price_distribution.png)
 
-### Key Observations:
+### **Key Observations**
 - Prices are highly skewed.
 - Most properties fall within the low-to-medium price range.
 - Outliers may influence predictions.
 
 ---
 
-# Preprocessing Steps
+# **Preprocessing Steps**
 
 ### **Key Preprocessing Steps**
 1. **Handle Categorical Data**:
@@ -114,67 +112,67 @@ X_test = scaler.transform(X_test)
 
 ---
 
-# Preprocessing: Feature Coefficients of Linear Model
+# **Preprocessing: Feature Coefficients of Linear Model**
 
 ![Feature Coefficients](images/feature_coeff_linear_model.png)
 
 ---
 
-### Observations:
+# **Observations**
 - Linear models identified features like "Area" as significant.
 - Feature importance will vary across models.
 
 ---
 
-# Linear Regression Results
+# **Linear Regression Results**
 
 ![Actual vs Predicted: Linear Regression](images/actual_vs_pred_linear.png)
 
 ---
 
-### Results:
+# **Results**
 - **R²: 0.68**
 - Captures only 68% of variance in the data.
 - Performs moderately well but struggles with non-linearity.
 
 ---
 
-# Polynomial Regression Results
+# **Polynomial Regression Results**
 
 ![Actual vs Predicted: Polynomial Regression](images/actual_vs_pred_poly.png)
 
 ---
 
-### Results:
+# **Results**
 - **Degree: 2 | R²: 0.79**
 - Fits the data better but may suffer from overfitting, especially with such a small dataset.
 
 ---
 
-# Ridge and Lasso Regression
+# **Ridge and Lasso Regression**
 
-### Why Regularization?
+### **Why Regularization?**
 - Reduces overfitting by penalizing large coefficients.
 
-### Results
+### **Results**
 - Ridge Regression: **R² = 0.69**
 - Lasso Regression: **R² = 0.69**
 
 ---
 
-# Feature Importance: Tree Models
+# **Feature Importance: Tree Models**
 
 ![Feature Importance: Random Forest Regressor](images/rfr_feature_importance.png)
 
 ---
 
-### Observations:
+# **Observations**
 - "Area" dominates in regression models.
 - Models like Random Forest capture non-linear relationships effectively.
 
 ---
 
-# Feature Engineering
+# **Feature Engineering**
 
 ### **New Features Created**
 1. **`area_per_bedroom`**: Area / Number of Bedrooms.
@@ -186,7 +184,7 @@ X_test = scaler.transform(X_test)
 
 ---
 
-# Decision Tree Regressor
+# **Decision Tree Regressor**
 
 ### Performance:
 - Baseline Accuracy: **0.20**
@@ -194,13 +192,13 @@ X_test = scaler.transform(X_test)
 
 ---
 
-# Number of Features to Consider when Looking for the Best Split vs Accuracy 
+# **Number of Features to Consider when Looking for the Best Split vs Accuracy** 
 
 ![Number of Features vs Accuracy](images/dtr_numfeatures_vs_accuracy.png)
 
 ---
 
-# Random Forest Regressor
+# **Random Forest Regressor**
 
 ### Performance:
 - Default Accuracy: **0.56**
@@ -208,20 +206,20 @@ X_test = scaler.transform(X_test)
 
 ---
 
-# Number of Trees in the Forest vs Accuracy 
+# **Number of Trees in the Forest vs Accuracy** 
 
 ![Number of Trees vs Accuracy](images/rfr_numtrees_vs_accuracy.png)
 
 ---
 
 
-# Neural Networks: Architectures and Results
+# **Neural Networks: Architectures and Results**
 
 ![Neural Network: Actual vs Predicted](images/neuralnetwork_actual_vs_predicted.png)
 
 ---
 
-# Insights:
+# **Insights**
 - Neural networks struggled with overfitting and the small dataset.
 - Even with more complex models, it seemed as though performance did not improve.
 - Though we utilized Early Stopping and Dropout layers, our model still seemed to overfit.
@@ -229,33 +227,30 @@ X_test = scaler.transform(X_test)
 
 ---
 
-# Architecture 1
+# **Architecture 1**
 1. Simple 2-layer NN → **R²: -4.77**
 
 ![Neural Network: Simple 2-layer NN with Dropout](images/architecture1_trainingloss_vs_valLoss.png)
 
 ---
 
-# Architecture 2
+# **Architecture 2**
 2. Improved 3-layer NN → **R²: 0.60**
 
 ![Neural Network: Improved 3-layer NN with Dropout](images/architecture2_trainingloss_vs_valLoss.png)
 
 ---
 
-# Architecture 3
+# **Architecture 3**
 3. Complex 5-layer NN → **R²: 0.57**
 
 ![Neural Network: Complex 5-layer NN with Dropout](images/architecture3_trainingloss_vs_valLoss.png)
 
 ----
 
-# Transition to Classification
-
-### **Why Switch to Classification?**
+# **Transition to Classification**
 - Regression struggled with overfitting.
 - Classification simplifies the problem.
-
 ### **Classes**
 - Low, Medium, High, Premium.
 - Used `pandas.qcut()` to categorize prices.
@@ -284,11 +279,14 @@ X_train_log, X_test_log, y_train_log, y_test_log = train_test_split(
 
 ![Logistic Regression Confusion Matrix](images/log_reg_confusion_matrix.png)
 
+---
+
+# **Interpretation of Matrix**
+
 - The diagonal values show correct predictions for each category
 - Off-diagonal values show misclassifications
 
 ---
-
 **Low price category:**
 - Accuracy: 91.7%
 - Misclassification Rate: 8.3%
@@ -297,6 +295,8 @@ X_train_log, X_test_log, y_train_log, y_test_log = train_test_split(
 - Accuracy: 100.0%
 - Misclassification Rate: 0.0%
 
+---
+
 **High price category:**
 - Accuracy: 84.2%
 - Misclassification Rate: 15.8%
@@ -304,7 +304,6 @@ X_train_log, X_test_log, y_train_log, y_test_log = train_test_split(
 **Premium price category:**
 - Accuracy: 94.1%
 - Misclassification Rate: 5.9%
-
 ---
 
 # **Logistic Regression with Lasso Performance**
@@ -343,7 +342,9 @@ Classification Report: (Precision, Recall, F1-Score, Support)
 - Linear Kernel: **100% accuracy** → Overfit.
 - Polynomial Kernel: **95.41% accuracy**.
 
-### Non-Linear Support Vector Machine Performance:
+---
+
+# **Non-Linear Support Vector Machine Performance**
 **Accuracy: 0.9541**
 
 Classification Report: (Precision, Recall, F1-Score, Support)
@@ -368,6 +369,10 @@ Classification Report: (Precision, Recall, F1-Score, Support)
 # **Decision Tree Classifier**
 - Tuned Accuracy: **83.49%**
 - Positive correlation with features.
+
+---
+
+# **
 
 ![Number of Features vs Accuracy](images/dtc_numfeatures_vs_accuracy.png)
 
@@ -401,9 +406,6 @@ Classification Report: (Precision, Recall, F1-Score, Support)
 2. Grid Search and Randomized Search
 
 ---
-
-# Results Summary
-
 | **Model**                | **R² / Accuracy** | **Notes**                     |
 |---------------------------|-------------------|--------------------------------|
 | Linear Regression         | R²: 0.68         | Moderate.                     |
@@ -418,17 +420,17 @@ Classification Report: (Precision, Recall, F1-Score, Support)
 
 ---
 
-# Conclusions
+# **Conclusions**
 
-1. **Best Model**:
+**1. Best Model:**
    - Regression: Random Forest Regressor.
    - Classification: SVM with Polynomial Kernel.
 
-2. **Challenges**:
+**2. Challenges:**
    - Overfitting is a major concern for most models.
    - Dataset size limits generalization.
 
-3. **Future Work**:
+**3. Future Work:**
    - Collect more data.
    - Explore advanced ensemble techniques and feature engineering.
 
